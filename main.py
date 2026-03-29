@@ -1,18 +1,50 @@
+#Redo rooms, add more rooms
+#Add item systems
+#Clean up text presentation
+
+
 print("Welcome to Drantill")
 from player import Player
 from rooms import all_rooms
 
 def main():
     player_name = input("What is your name, adventurer? ")
-    player = Player(player_name, 100, [], all_rooms["entrance"])
+    player = Player(player_name, 100, 10, [], all_rooms["entrance"])
     print(f"Welcome, {player.name}! Your adventure begins now.")
     print(player.current_room.description)
+
+    def combat(enemy):
+        if player.current_room.npcs == []:
+            return
+        print(f"You encounter a {enemy.name}!")
+        fight_flee = input("Do you want to fight or flee? (fight/flee) ")
+        
+        if fight_flee == "fight":
+            player.health -= enemy.damage
+            enemy.health -= player.damage
+            print(f"You attack the {enemy.name} and deal {player.damage} damage.")
+            print(f"The {enemy.name} attacks you and deals {enemy.damage} damage.")
+            if enemy.health <= 0:
+                print(f"You have defeated the {enemy.name}!")
+                player.current_room.npcs.remove(enemy)
+            elif enemy.health > 0:
+                combat(enemy)
+        elif fight_flee == "flee":
+            print("You flee back to the previous room.")
+            player.move("north")  # North is placeholder for fleeing back to the previous room
+        else:
+            print("Invalid choice. The enemy takes advantage of your hesitation and attacks you!")
+            player.health -= enemy.damage
+            print(f"The {enemy.name} attacks you and deals {enemy.damage} damage.")
+
 
     while True:
         command = input("What would you like to do? (move [direction], stats, search, quit) ")
         if command.startswith("move"):
             direction = command.split()[1]
             player.move(direction)
+            if player.current_room.npcs != []:
+                combat(player.current_room.npcs[0])
         elif command == "stats":
             player.disp_stats()
         elif command == "search":
@@ -22,6 +54,12 @@ def main():
             break
         else:
             print("Invalid command. Please try again.")
+        if "Sword of Drantill" in player.inventory:
+            print("Congratulations! You have found the Sword of Drantill and won the game!")
+            break
+        if player.health <= 0:
+            print("You have died. Game over.")
+            break
 
 
 

@@ -1,8 +1,9 @@
 from rooms import all_rooms
 class Player():
-    def __init__(self, name, health, inventory, current_room):
+    def __init__(self, name, health, damage, inventory, current_room):
         self.name = name
         self.health = health
+        self.damage = damage
         self.inventory = inventory
         self.current_room = current_room
 
@@ -20,4 +21,11 @@ class Player():
             print("You can't go that way.")
 
     def search(self):
-        print("You search the room but find nothing of interest.")
+        if self.current_room.items == []:
+            print("You search the room but find nothing of interest.")
+        else:
+            print("You search the room and find the following items:")
+            for item in self.current_room.items:
+                print(f" - {item}, you add it to your inventory.")
+                self.inventory.append(item)
+                self.current_room.items.remove(item)
