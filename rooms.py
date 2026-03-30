@@ -1,4 +1,4 @@
-from entities import Enemy, Items
+from entities import Enemy, Item 
 class Room():
     def __init__(self, name, description, exits, items, npcs):
         self.name = name
@@ -10,7 +10,7 @@ class Room():
 
 entrance_room = Room(
     "Entrance",
-    "You find yourself at the entryway of a dark and foreboding keep.  As the sky darkens overhead, the ominous feeling in your breast grows dramatically. Despite this feeling, you know that your quest lies within these walls. You must enter and face what is within. The only way forward is through the grand doors ahead to the south.",
+    "You find yourself at the entryway of a dark and foreboding keep.  As the sky darkens overhead, the ominous feeling in your breast grows dramatically.\nDespite this feeling, you know that your quest lies within these walls. You must enter and face what is within.\nThe only way forward is through the grand doors ahead to the south.",
     {"south": "hall 1"},
     [],
     []
@@ -18,7 +18,7 @@ entrance_room = Room(
 
 hallway_room_1 = Room(
     "Hall 1",
-    "As you enter the keep, you find yourself in a long and dimly lit hallway that slopes downward. The walls are adorned with faded tapestries. Once this was clearly a place of grand opulence. However, it now seems to have faded to nothing more than a forgotten memory. The smell immediately hits you of rot and stale air. In front of you to the south is a door with a faint light flickering beneath.",
+    "As you enter the keep, you find yourself in a long and dimly lit hallway that slopes downward. The walls are adorned with faded tapestries.\nOnce this was clearly a place of grand opulence. However, it now seems to have faded to nothing more than a forgotten memory.\nThe smell immediately hits you of rot and stale air.\nIn front of you to the south is a door with a faint light flickering beneath.",
     {"north": "entrance",  "south": "audience chamber"},
     ["torch"],
     [] 
@@ -27,7 +27,7 @@ hallway_room_1 = Room(
 
 hallway_room_2 = Room(
     "Hall 2",
-    "Another hallway, adorned with the same types of tapestries that are becoming familiar. There are doorways to the east and west.",
+    "Another hallway, adorned with the same types of tapestries that are becoming familiar.\nThere are doorways to the East and West.",
     {"west": "armory", "east": "audience chamber"},
     [],
     [] 
@@ -36,7 +36,7 @@ hallway_room_2 = Room(
 
 hallway_room_3 = Room(
     "Hall 3",
-    "Another hallway, adorned with the same types of tapestries that are becoming familiar. There are doorways to the east and west.",
+    "Another hallway, adorned with the same types of tapestries that are becoming familiar.\nThere are doorways to the East and West.",
     {"west": "audience chamber", "east": "dining room"},
     [],
     [] 
@@ -45,7 +45,7 @@ hallway_room_3 = Room(
 
 hallway_room_4 = Room(
     "Hall 4",
-    "Another hallway, adorned with the same types of tapestries that are becoming familiar. There are doorways to the east and west.",
+    "Another hallway, adorned with the same types of tapestries that are becoming familiar.\nThere are doorways to the East and West.",
     {"west": "dining room", "east": "servants area"},
     [],
     [] 
@@ -53,7 +53,7 @@ hallway_room_4 = Room(
 
 hallway_room_5 = Room(
     "Hall 5",
-    "Another hallway, adorned with the same types of tapestries that are becoming familiar. There are doorways to the east and west.",
+    "Another hallway, adorned with the same types of tapestries that are becoming familiar.\nThere are doorways to the North and South.",
     {"north": "armory", "south": "barracks"},
     [],
     [] 
@@ -61,7 +61,7 @@ hallway_room_5 = Room(
 
 hallway_room_6 = Room(
     "Hall 6",
-    "Another hallway, adorned with the same types of tapestries that are becoming familiar. There are doorways to the east and west.",
+    "Another hallway, adorned with the same types of tapestries that are becoming familiar.\nThere are doorways to the North and South.",
     {"north": "audience chamber", "south": "guest quarters"},
     [],
     [] 
@@ -69,7 +69,7 @@ hallway_room_6 = Room(
 
 hallway_room_7 = Room(
     "Hall 7",
-    "Another hallway, adorned with the same types of tapestries that are becoming familiar. There are doorways to the east and west.",
+    "Another hallway, adorned with the same types of tapestries that are becoming familiar.\nThere are doorways to the North and South.",
     {"north": "dining room", "south": "throne room"},
     [],
     [] 
@@ -77,7 +77,7 @@ hallway_room_7 = Room(
 
 hallway_room_8 = Room(
     "Hall 8",
-    "Another hallway, adorned with the same types of tapestries that are becoming familiar. There are doorways to the east and west.",
+    "Another hallway, adorned with the same types of tapestries that are becoming familiar.\nThere are doorways to the East and West.",
     {"west": "royal chambers", "east": "throne room"},
     [],
     [] 
@@ -85,15 +85,15 @@ hallway_room_8 = Room(
 
 armory_room = Room(
     "Armory",
-    "As you enter, it is quite clear this used to be an armory. Racks of swords, shields, spears and armor. The grand majority is rusted beyond any use. However there may be a piece or two that are of some use. Skulking in the corner is a short goblin armed with a rusty short sword.",
-    {"east": "hall 2"},
+    "As you enter, it is quite clear this used to be an armory. Racks of swords, shields, spears and armor.\nThe grand majority is rusted beyond any use. However there may be a piece or two that are of some use.\nThere are exits to the East and South",
+    {"east": "hall 2", "south": "hall 5"},
     ["short sword", "breast plate"],
     [Enemy("Goblin", 30, 5)]
 )
 
 audience_chamber = Room(
     "Audience Chamber",
-    "Past the doorway is a room that seems like it was once a greeting area for visiting guests. The halls are adorned with similar tapestries to those you have already seen. They depict scenes of regal lords ruling over the land. There are several tables that have broken and decayed over the years with a small throne sitting in the south east corner. There are exits to north, south, east, and west.",
+    "Past the doorway is a room that seems like it was once a greeting area for visiting guests.\nThe halls are adorned with similar tapestries to those you have already seen. They depict scenes of regal lords ruling over the land.\nThere are several tables that have broken and decayed over the years with a small throne sitting in the south east corner.\nThere are exits to North, South, East, and West.",
     {"north": "hall 1", "east": "hall 3", "south": "hall 6", "west": "hall 2"},
     ["tarnished crown"],
     []
@@ -101,36 +101,61 @@ audience_chamber = Room(
 
 dining_room = Room(
     "Dining Room",
-    "It is clear that this room was once a dining hall. The ornate carvings are still observable from the severely rotted wood that remains. There are still shards of broken plates on the floor, not worthy of the goblins looting no doubt. There must have been much evil that ocurred here. Indeed it appears some of it is rising right now...  The exits are to the east, west, and south."
-    #"You step into a grand library filled with towering bookshelves. The air is thick with the scent of old paper and leather. The shelves are filled with dusty tomes and ancient scrolls. There is a door to the north, and a large and imposing door to the east.",
+    "It is clear that this room was once a dining hall. The ornate carvings are still observable from the severely rotted wood that remains.\nThere are still shards of broken plates on the floor, not worthy of the goblins looting no doubt.\nThere must have been much evil that ocurred here.\nThe exits are to the East, West, and South.",
     {"west": "hall 3", "east": "hall 4", "south": "hall 7"},
     ["magic ring"],
     [Enemy("Skeleton", 20, 10)]
 )
-#Servants area
-#Barracks
-#SecretRoom
-#Guest Quarters
-#Throne Room
-#Royal Chambers
 
-
-#Needs editing
-library_room = Room(
-    "Library",
-    "You step into a grand library filled with towering bookshelves. The air is thick with the scent of old paper and leather. The shelves are filled with dusty tomes and ancient scrolls. There is a door to the north, and a large and imposing door to the east.",
-    {"north": "hallway", "east": "lair"},
-    [],
-    [Enemy("Skeleton", 20, 10)]
+servants_area = Room(
+    "Servants Area",
+    "No grandeur exists within this room. It is clear this is where the servants lived, prepared meals and washed for the rulers of the keep.\nSomehow even now, it feels inferior to the other chambers.\nThe only exit is to the West.",
+    {"west": "dining room"},
+    ["healing potion"],
+    [Enemy("Giant Rat", 5, 5)]
 )
 
-#Needs editing
-lair_room = Room(
-    "Lair",
-    "You enter a dark and foreboding lair. The air is thick with the scent of decay and danger. The walls are adorned with grotesque tapestries, and the floor is covered in bloodstains. You can hear the sound of something breathing in the darkness. There is a door to the west.",
-    {"west": "library"},
+#Barracks
+barracks = Room(
+    "Barracks",
+    "You come to what was clearly the barracks for the keep guard. They certainly packed them in tight.\nThe only exit is to the North.",
+    {"north": "hall 5"},
+    ["shield"],
+    [Enemy("Orc Warrior", 30, 10)]
+)
+
+#SecretRoom
+secret_room = Room(
+    "Secret Room",
+    "Secret room, Exit to the East",
+    {"east": "guest quarters"},
+    ["mysterious key", "health potion", "helm of the mighty"],
+    []
+)
+
+#Guest Quarters
+guest_quarters = Room(
+    "Guest Quarters",
+    "Guest Quarters, Exits to the West and North",
+    {"west": "secret room", "north": "hall 6"},
+    ["health potion"],
+    [Enemy("Rat man", 10, 5)]
+)
+#Throne Room
+throne_room = Room(
+    "Throne Room",
+    "Throne room, Exits to the North and West",
+    {"north": "hall 7", "west": "hall 8"},
     ["Sword of Drantill"],
     [Enemy("Orc Lord", 50, 15)]
+)
+#Royal Chambers
+royal_chambers = Room(
+    "Royal Chambers",
+    "Royal chambers, Exit to the East",
+    {"east": "hall 8"},
+    ["Grand Amulet"],
+    []
 )
 
 all_rooms = {

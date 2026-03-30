@@ -1,6 +1,10 @@
-#Redo rooms, add more rooms
+#Redo rooms
 #Add item systems
 #Clean up text presentation
+#Improve combat system
+#Add secret room
+#enemy dictionary
+#Add Town
 
 
 print("Welcome to Drantill")
@@ -11,7 +15,9 @@ def main():
     player_name = input("What is your name, adventurer? ")
     player = Player(player_name, 100, 10, [], all_rooms["entrance"])
     print(f"Welcome, {player.name}! Your adventure begins now.")
+    print("----------------------------------------------------------------")
     print(player.current_room.description)
+    print("----------------------------------------------------------------")
 
     def combat(enemy):
         if player.current_room.npcs == []:
@@ -31,7 +37,15 @@ def main():
                 combat(enemy)
         elif fight_flee == "flee":
             print("You flee back to the previous room.")
-            player.move("north")  # North is placeholder for fleeing back to the previous room
+            if direction == "south":
+                player.move("north") 
+            elif direction == "north":
+                player.move("south")
+            elif direction == "east":
+                player.move("west") 
+            elif direction == "west":
+                player.move("east")
+
         else:
             print("Invalid choice. The enemy takes advantage of your hesitation and attacks you!")
             player.health -= enemy.damage
@@ -43,12 +57,15 @@ def main():
         if command.startswith("move"):
             direction = command.split()[1]
             player.move(direction)
+            print("----------------------------------------------------------------")
             if player.current_room.npcs != []:
                 combat(player.current_room.npcs[0])
         elif command == "stats":
             player.disp_stats()
+            print("----------------------------------------------------------------")
         elif command == "search":
             player.search()
+            print("----------------------------------------------------------------")
         elif command == "quit":
             print("Thanks for playing!")
             break
