@@ -1,19 +1,26 @@
 #Import
 from rooms import all_rooms
 
+
 #Player Class
 class Player():
     #Player Constructor
-    def __init__(self, name, health, damage, inventory, current_room):
+    def __init__(self, name, health, damage, armor, inventory, current_room):
         self.name = name
         self.health = health
         self.damage = damage
+        self.armor = armor
         self.inventory = inventory
         self.current_room = current_room
     #Stat Display
+    
     def disp_stats(self):
         print(f"{self.name} has {self.health} health points.")
-        print(f"{self.name} has the following items in their inventory: {', '.join(self.inventory)}.")
+        print(f"{self.name} does {self.damage} damage.")
+        print(f"{self.name} is protected by {self.armor} points of armor.")
+        print(f"{self.name} has the following items in their inventory:")
+        for item in self.inventory:
+            print(f" - {item.name}")
     #Player Move
     def move(self, direction):
         #Checks if moving direction is in exits from current room
@@ -27,12 +34,20 @@ class Player():
         else:
             print("You can't go that way.")
     #Player Search
+
     def search(self):
         if self.current_room.items == []:
             print("You search the room but find nothing of interest.")
         else:
             print("You search the room and find the following items:")
             for item in self.current_room.items:
-                print(f" - {item}, you add it to your inventory.")
+                print(f" - {item.name}, you add it to your inventory.")
                 self.inventory.append(item)
                 self.current_room.items.remove(item)
+                self.update_stats(item)
+    
+    def update_stats(self, item):
+        if item.effect == "damage_boost":
+            self.damage += item.value
+        elif item.effect == "armor_boost":
+            self.armor += item.value

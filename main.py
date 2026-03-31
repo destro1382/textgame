@@ -1,7 +1,6 @@
-#Add item systems
+#Equip items
 #Improve combat system
 #Add secret room
-#enemy dictionary
 #Add Town
 #Replace hallway titles
 #Save system
@@ -16,7 +15,7 @@ def main():
     #Player definition
     player_name = input("What is your name, adventurer? ")
     #Initial player stats, location
-    player = Player(player_name, 100, 10, [], all_rooms["entrance"])
+    player = Player(player_name, 100, 10, 0, [], all_rooms["entrance"])
     #Introduction
     print(f"Welcome, {player.name}! Your adventure begins now.")
     print("----------------------------------------------------------------")
@@ -30,10 +29,10 @@ def main():
         fight_flee = input("Do you want to fight or flee? (fight/flee) ")
         
         if fight_flee == "fight":
-            player.health -= enemy.damage
+            player.health -= (enemy.damage - player.armor)
             enemy.health -= player.damage
             print(f"You attack the {enemy.name} and deal {player.damage} damage.")
-            print(f"The {enemy.name} attacks you and deals {enemy.damage} damage.")
+            print(f"The {enemy.name} attacks you and deals {enemy.damage - player.armor} damage.")
             if enemy.health <= 0:
                 print(f"You have defeated the {enemy.name}!")
                 player.current_room.npcs.remove(enemy)

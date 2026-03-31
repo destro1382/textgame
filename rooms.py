@@ -14,7 +14,7 @@ entrance_room = Room(
     "Entrance",
     "You find yourself at the entryway of a dark and foreboding keep.  As the sky darkens overhead, the ominous feeling in your breast grows dramatically.\nDespite this feeling, you know that your quest lies within these walls. You must enter and face what is within.\nThe only way forward is through the grand doors ahead to the South.",
     {"south": "hall 1"},
-    [],
+    [items["test sword"]],
     []
 )
 
@@ -89,7 +89,7 @@ armory_room = Room(
     "Armory",
     "As you enter, it is quite clear this used to be an armory. Racks of swords, shields, spears and armor.\nThe grand majority is rusted beyond any use. However there may be a piece or two that are of some use.\nThere are exits to the East and South",
     {"east": "hall 2", "south": "hall 5"},
-    ["Short Sword", "Breast Plate"],
+    [items["short sword"], items["breast plate"]],
     [enemies["goblin"]]
 )
 
@@ -114,19 +114,19 @@ servants_area = Room(
     "No grandeur exists within this room. It is clear this is where the servants lived, prepared meals and washed for the rulers of the keep.\nSomehow even now, it feels inferior to the other chambers.\nThe only exit is to the West.",
     {"west": "dining room"},
     ["Healing Potion"],
-    [Enemy("Giant Rat", 5, 5)]
+    [enemies["giant rat"]]
 )
 
-#Barracks
+
 barracks = Room(
     "Barracks",
     "You come to what was clearly the barracks for the keep guard. The cramped quarters still would have held place for a dozen or so guards.\nNow all that remains are broken bunks and blood stains. Perhaps these soldiers met with an untimely end.\nThe only exit is to the North.",
     {"north": "hall 5"},
     ["Shield"],
-    [Enemy("Orc Warrior", 30, 10)]
+    [enemies["orc warrior"]]
 )
 
-#SecretRoom
+
 secret_room = Room(
     "Secret Room",
     "As you pass behind the tapestry you find yourself in a small room with several rotting skeletons within.\nThis would seem to be a secret room to hide from intruders, unfortunately it seems to have worked too well.\nExit to the East",
@@ -135,23 +135,23 @@ secret_room = Room(
     []
 )
 
-#Guest Quarters
+
 guest_quarters = Room(
     "Guest Quarters",
     "These would seem to be the guest quarters. While they lack some of thet regal feel of the rest of the keep.\nThe opulence still outshines any where of the surrounding lands you have seen despite the rotted and deserted nature.\nExits to the West and North",
     {"west": "secret room", "north": "hall 6"},
     ["Health Potion"],
-    [Enemy("Rat man", 10, 5)]
+    [enemies["rat man"]]
 )
-#Throne Room
+
 throne_room = Room(
     "Throne Room",
     "Clearly this is where the lord sat and held court. Within this room, you first notice a massive poorly constructed chair where once sat a mighty throne.\nThe throne itself has clearly been stripped of any ornamentation and now sits discarded.\nExits to the North and West",
     {"north": "hall 7", "west": "hall 8"},
     ["Sword of Drantill"],
-    [Enemy("Orc Lord", 50, 15)]
+    [enemies["orc lord"]]
 )
-#Royal Chambers
+
 royal_chambers = Room(
     "Royal Chambers",
     "The bedchambers of the lord and lady clearly. There is a massive broken bedframe, blood covers every wall.\nThis was perhaps once a place of peaceful relaxation but has been turned into a place of horror.\n Exit to the East",
