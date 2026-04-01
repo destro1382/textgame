@@ -1,5 +1,5 @@
 #Import
-from rooms import all_rooms
+from areas.world import all_rooms
 
 
 #Player Class
