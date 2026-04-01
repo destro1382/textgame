@@ -1,19 +1,14 @@
 #Imports
 from entities import Enemy, Item, enemies, items
+from areas.__init__ import Room
 #Rooom Class
-class Room():
-    def __init__(self, name, description, exits, items, npcs):
-        self.name = name
-        self.description = description
-        self.exits = exits
-        self.items = items
-        self.npcs = npcs
+
 
 
 entrance_room = Room(
     "Entrance",
     "You find yourself at the entryway of a dark and foreboding keep.  As the sky darkens overhead, the ominous feeling in your breast grows dramatically.\nDespite this feeling, you know that your quest lies within these walls. You must enter and face what is within.\nThe only way forward is through the grand doors ahead to the South.",
-    {"south": "hall 1"},
+    {"south": "hall 1", "north": "village entrance"},
     [items["test sword"]],
     []
 )
@@ -160,7 +155,7 @@ royal_chambers = Room(
     []
 )
 
-all_rooms = {
+keep_rooms = {
     "entrance": entrance_room,
     "hall 1": hallway_room_1,
     "hall 2": hallway_room_2,

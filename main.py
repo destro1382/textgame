@@ -1,15 +1,21 @@
 #Equip items
 #Improve combat system
 #Add secret room
-#Add Town
+#Add Town descriptions
+#Add NPCs
 #Replace hallway titles
 #Save system
 
 #Welcome Message
 print("Welcome to Drantill")
+
+#Imports world
+from areas.world import all_rooms
+
+
 #Initial Imports
 from player import Player
-from rooms import all_rooms
+
 
 def main():
     #Player definition
